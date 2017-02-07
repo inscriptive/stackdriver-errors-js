@@ -13,7 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-(function(exports) {
+var StackTrace = require("stacktrace-js");
+
+module.exports = (function() {
   "use strict";
 
   /**
@@ -25,7 +27,6 @@
    * An Error handler that sends errors to the Stackdriver Error Reporting API.
    */
   var StackdriverErrorReporter = function() {};
-  exports.StackdriverErrorReporter = StackdriverErrorReporter;
 
   /**
    * Initialize the StackdriverErrorReporter object.
@@ -130,4 +131,6 @@
     };
     xhr.send(JSON.stringify(payload));
   };
-})(this);
+
+  return StackdriverErrorReporter;
+})();
